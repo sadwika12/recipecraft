@@ -1,5 +1,5 @@
 import React from 'react';
-import './About.css'; 
+import './about.css'; 
 import { Link } from 'react-router-dom'; 
 import { Leaf, Cpu, ChefHat, User } from 'lucide-react'; 
 
