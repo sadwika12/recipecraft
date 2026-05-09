@@ -57,9 +57,9 @@ cd recipecraft
 cd backend
 npm install
 
-# Create server/.env
-# GEMINI_API_KEY=your_actual_api_key_here
-# PORT=5000
+# Create .env file
+ GEMINI_API_KEY=your_actual_api_key_here
+ PORT=5000
 
 # Start backend
 node server.js
@@ -84,32 +84,24 @@ npm run dev
 
 ## 📈 Future Enhancements
 
-- ❤️ **Save Favorite Recipes**  
-  Allow users to bookmark and organize their most-loved recipes for quick access later.
+- ❤️ **Save Favorite Recipes:** Allow users to bookmark and organize their most-loved recipes for quick access later.
 
-- 🖼️ **AI-Generated Dish Images**  
-  Generate realistic images of the prepared dish to help users visualize the final result.
+- 🖼️ **AI-Generated Dish Images:** Generate realistic images of the prepared dish to help users visualize the final result.
 
-- 🌍 **Multi-Language Support**  
-  Provide recipe instructions and ingredient names in multiple languages for global accessibility.
+- 🌍 **Multi-Language Support:** Provide recipe instructions and ingredient names in multiple languages for global accessibility.
 
-- 🔐 **User Authentication & Profiles**  
-  Enable sign up and login functionality so users can save preferences, favorites, and recipe history.
+- 🔐 **User Authentication & Profiles:** Enable sign up and login functionality so users can save preferences, favorites, and recipe history.
 
-- 📄 **Export Recipes to PDF**  
-  Download beautifully formatted recipes as PDF files for printing or offline use.
+- 📄 **Export Recipes to PDF:** Download beautifully formatted recipes as PDF files for printing or offline use.
 
-- 🥗 **Dietary Preference Filters**  
-  Support vegetarian,non-vegetarian and other dietary restrictions.
+- 🥗 **Dietary Preference Filters:** Support vegetarian, non-vegetarian, and other dietary restrictions.
 
-- ⏱️ **Cooking Time & Difficulty Estimation**  
-  Display estimated preparation time and difficulty level for each recipe.
+- ⏱️ **Cooking Time & Difficulty Estimation:** Display estimated preparation time and difficulty level for each recipe.
 
-- 📊 **Nutrition Information**  
-  Show calories, protein, carbohydrates, and other nutritional details.
+- 📊 **Nutrition Information:** Show calories, protein, carbohydrates, and other nutritional details.
 
-- 🎤 **Voice Input for Ingredients**  
-  Allow users to speak ingredients instead of typing them manually.
+- 🎤 **Voice Input for Ingredients:** Allow users to speak ingredients instead of typing them manually.
+
 
 ## 🤝 Contributing
 
