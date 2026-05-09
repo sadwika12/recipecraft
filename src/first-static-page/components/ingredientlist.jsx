@@ -1,29 +1,28 @@
-export default function IngredientList(props){
-     const ingredientList = props.ingredients.map(ingredient=> (
-        <li key={ingredient}>{ingredient}</li>
-    ));
-    
-   return (
-    <section>
-      <h2 className="ingredients-heading">Ingredients On Hand:</h2>
-        <div className="main-section">
-      <ul>{ingredientList}</ul>
-      {ingredientList.length >3 && <div className="get-recipe-container">
-          <div className="get-recipe-children-container">
-              <div className="get-recipe-sub-children-container">
-              <div className="text-field" ref={props.ref}>
-                  <h3>Ready for a Recipe?</h3>
-                  <p>
-                  Generate a recipe from your list of Ingredients
-                  </p>
-              </div>
-              <div className="button-field">
-                  <button className="get-recipe" onClick={props.getRecipe}>Get Recipe</button>
-              </div>
-              </div>
+export default function IngredientList(props) {
+  const ingredientChips = props.ingredients.map((ingredient) => (
+    <li key={ingredient} className="ingredient-chip">
+      <span className="chip-dot"></span>
+      {ingredient}
+    </li>
+  ));
+
+  return (
+    <section className="ingredients-section">
+      <h2 className="ingredients-heading">Your Ingredients</h2>
+
+      <ul className="ingredients-grid">{ingredientChips}</ul>
+
+      {ingredientChips.length > 3 && (
+        <div className="recipe-cta-card" ref={props.ref}>
+          <div className="recipe-cta-text">
+            <h3>Ready to Cook?</h3>
+            <p>Generate a personalized recipe from your {props.ingredients.length} ingredients</p>
           </div>
-      </div>}
-      </div>
-  </section>
-   );
+          <button className="get-recipe" onClick={props.getRecipe}>
+            ✨ Generate Recipe
+          </button>
+        </div>
+      )}
+    </section>
+  );
 }

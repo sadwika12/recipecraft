@@ -1,79 +1,114 @@
-// filepath: c:\Users\Sadwika\first-react\src\first-static-page\mainpage.jsx
-import React from 'react';
-import IngredientList from './components/ingredientlist';
-import RecipeText from './components/recipetext';
-import { useState,useRef } from "react";
+import React from "react";
+import IngredientList from "./components/ingredientlist";
+import RecipeText from "./components/recipetext";
+
 function MainPage() {
-    const [newIngredient,setnewIngredient]=React.useState([]);
-    const[recipeShown,setrecipeShown]=React.useState("");
-    const recipesection=React.useRef(null);
-    React.useEffect(()=>{
-        if(recipeShown !=="" && recipesection.current !== null){
-           const yCoord=window.scrollY+recipesection.current.getBoundingClientRect().top;
-              window.scrollTo({
-                top:yCoord,
-                behavior:"smooth"
-            });
-        }
-    },[recipeShown])
+  const [ingredients, setIngredients] = React.useState([]);
+  const [recipeShown, setRecipeShown] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
+  const recipeRef = React.useRef(null);
 
+  React.useEffect(() => {
+    if (recipeShown && recipeRef.current) {
+      const y = window.scrollY + recipeRef.current.getBoundingClientRect().top - 24;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+  }, [recipeShown]);
 
-    async function getRecipe() {
-
+  async function getRecipe() {
+    setLoading(true);
+    setRecipeShown("");
     try {
       const response = await fetch("http://localhost:5000/api/recipe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ingredients:newIngredient }),
+        body: JSON.stringify({ ingredients }),
       });
 
       const data = await response.json();
 
       if (data?.recipe) {
-        setrecipeShown(data.recipe);
-      } else if (data?.error) {
-        // Handle errors sent from the backend
-        setrecipeShown(`Error: ${data.error}`);
-      }
-      else {
-        setrecipeShown("⚠️ Error fetching recipe.");
+        setRecipeShown(data.recipe);
+      } else {
+        setRecipeShown(`⚠️ ${data?.error || "Error fetching recipe."}`);
       }
     } catch (err) {
       console.error("Frontend error:", err);
-      setrecipeShown("⚠️ Error fetching recipe.");
+      setRecipeShown("⚠️ Could not connect to the server. Make sure the backend is running.");
+    } finally {
+      setLoading(false);
     }
   }
 
-    
-
-
-    function addIngredient(formData){
-        const newIngredient=formData.get("ingredient");
-        setnewIngredient(prevIngredients=>[...prevIngredients,newIngredient]);
+  function addIngredient(formData) {
+    const ingredient = formData.get("ingredient")?.trim();
+    if (ingredient && !ingredients.includes(ingredient)) {
+      setIngredients((prev) => [...prev, ingredient]);
     }
-    return(
-        <main>
-            <form
-            className="form-container"
-            onSubmit={(e) => {
-                e.preventDefault(); // prevent page reload
-                const formData = new FormData(e.target);
-                addIngredient(formData);
-                e.target.reset(); // clear input
-            }}
-            >
-                <input type="text" placeholder="Add Ingredeints" className="user-input" name="ingredient">
-                </input>
-                <button  className="add-ingredient">
-                    Add a Ingredient 
-                </button>         
-            </form>
-            {newIngredient.length> 0 && <IngredientList ingredients={newIngredient} getRecipe={getRecipe}/>
-            }   
-            {recipeShown && <RecipeText recipeShown={recipeShown}/>}
-        </main>
+  }
 
-    )
+  return (
+    <main>
+      <section className="hero">
+        <div className="hero-badge">
+          <span>✦</span> AI-Powered Recipes
+        </div>
+        <h1>
+          Turn your ingredients into a delicious meal
+        </h1>
+        <p>
+          Add whatever's in your fridge or pantry and let AI craft the perfect recipe — no meal planning needed.
+        </p>
+      </section>
+
+      <div className="input-section">
+        <div className="input-card">
+          <label className="input-label" htmlFor="ingredient-input">
+            Add an ingredient
+          </label>
+          <form
+            className="form-row"
+            onSubmit={(e) => {
+              e.preventDefault();
+              const formData = new FormData(e.target);
+              addIngredient(formData);
+              e.target.reset();
+            }}
+          >
+            <input
+              id="ingredient-input"
+              type="text"
+              placeholder="e.g. chicken, garlic, tomatoes…"
+              className="user-input"
+              name="ingredient"
+              autoComplete="off"
+            />
+            <button type="submit" className="add-ingredient">
+              + Add
+            </button>
+          </form>
+        </div>
+      </div>
+
+      {ingredients.length > 0 && (
+        <IngredientList
+          ingredients={ingredients}
+          getRecipe={getRecipe}
+          ref={null}
+        />
+      )}
+
+      <div ref={recipeRef}>
+        {(loading || recipeShown) && (
+          <RecipeText recipeShown={recipeShown} loading={loading} />
+        )}
+      </div>
+
+      <footer className="footer">
+        Made with ♥ · Powered by Gemini AI
+      </footer>
+    </main>
+  );
 }
 
 export default MainPage;

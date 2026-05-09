@@ -1,0 +1,228 @@
+
+
+.about-container {
+  min-height: 100vh;
+  padding: 100px 24px 80px; 
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.hero-section {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--brown);
+}
+
+.hero-text {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 80px;
+}
+
+.feature-card {
+  padding: 40px 32px;
+  border-radius: var(--radius);
+  background: var(--white);
+  border: 1px solid var(--brown-light);
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--brown-mid);
+}
+
+.icon-wrapper {
+  margin-bottom: 20px;
+  display: inline-flex;
+  padding: 12px;
+  background: var(--cream-dark);
+  border-radius: 12px;
+}
+
+.feature-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+  color: var(--brown-dark);
+}
+
+.feature-card p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.cta-section {
+  text-align: center;
+  padding: 64px 32px;
+  border-radius: var(--radius);
+  background: var(--brown-dark);
+  color: var(--white);
+}
+
+.cta-section h2 {
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 16px;
+}
+
+.cta-btn {
+  background: var(--white);
+  color: var(--brown-dark);
+  padding: 16px 40px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  margin-top: 24px;
+  transition: transform 0.2s ease, box-shadow 0.2s;
+}
+
+.cta-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.developer-profile {
+  margin-top: 100px;
+  padding-top: 60px;
+  border-top: 1px solid var(--brown-light);
+  text-align: center;
+  margin-bottom:100px;
+}
+
+.dev-header {
+  margin-bottom: 40px;
+}
+
+.dev-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  color: var(--brown-dark);
+  margin-top: 10px;
+}
+
+.dev-card {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 40px;
+  background: var(--white);
+  border-radius: var(--radius);
+  border: 1px solid var(--brown-light);
+  text-align: left;
+  box-shadow: var(--shadow-md);
+}
+
+.dev-avatar {
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, var(--brown-dark), var(--brown));
+  color: var(--white);
+  border-radius: 30px; /* Squircle shape */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 20px rgba(92, 71, 48, 0.2);
+}
+
+.dev-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-left:10px;
+}
+
+.dev-links a {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.2s;
+}
+
+.dev-links a:hover {
+  color: var(--brown);
+}
+
+.dev-info h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.dev-title {
+  color: var(--green);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.dev-bio {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+.dev-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.dev-tags span {
+  background: var(--green-light);
+  color: var(--green);
+  padding: 5px 12px;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+
+@media (max-width: 768px) {
+  .dev-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px;
+  }
+  .dev-tags {
+    justify-content: center;
+  }
+}
