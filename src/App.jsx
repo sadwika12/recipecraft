@@ -1,14 +1,20 @@
-import { useState } from 'react';
-import React from 'react';
-import MainPage from './first-static-page/mainpage.jsx';
-import Header from './first-static-page/pageheader.jsx';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './first-static-page/pageheader';
+import About from './pages/about';
+import MainPage from './first-static-page/mainpage';
+import './App.css';
+
 function App() {
-    return (
-        <>
-        <Header />
-        <MainPage />
-        </>
-    )
+  return (
+    <Router>
+      <Header />
+      
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;
