@@ -7,6 +7,7 @@ function MainPage() {
   const [recipeShown, setRecipeShown] = React.useState("");
   const [loading, setLoading] = React.useState(false);
   const recipeRef = React.useRef(null);
+  const BACKEND_URL = "https://recipecraft-rf3m.onrender.com/";
 
   React.useEffect(() => {
     if (recipeShown && recipeRef.current) {
@@ -19,7 +20,7 @@ function MainPage() {
     setLoading(true);
     setRecipeShown("");
     try {
-      const response = await fetch("http://localhost:5000/api/recipe", {
+      const response = await fetch(`${BACKEND_URL}/api/recipe`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ingredients }),
@@ -34,7 +35,7 @@ function MainPage() {
       }
     } catch (err) {
       console.error("Frontend error:", err);
-      setRecipeShown("⚠️ Could not connect to the server. Make sure the backend is running.");
+      setRecipeShown("⚠️ Could not connect to the server. Make sure the backend is running at the correct URL.");
     } finally {
       setLoading(false);
     }
@@ -53,9 +54,7 @@ function MainPage() {
         <div className="hero-badge">
           <span>✦</span> AI-Powered Recipes
         </div>
-        <h1>
-          Turn your ingredients into a delicious meal
-        </h1>
+        <h1>Turn your ingredients into a delicious meal</h1>
         <p>
           Add whatever's in your fridge or pantry and let AI craft the perfect recipe — no meal planning needed.
         </p>
@@ -105,7 +104,7 @@ function MainPage() {
       </div>
 
       <footer className="footer">
-        Made with ♥ · Powered by Gemini AI
+        Made with ♥ · Powered by Gemini AI · Developer: Sadwika
       </footer>
     </main>
   );
