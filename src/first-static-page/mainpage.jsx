@@ -7,7 +7,7 @@ function MainPage() {
   const [recipeShown, setRecipeShown] = React.useState("");
   const [loading, setLoading] = React.useState(false);
   const recipeRef = React.useRef(null);
-  const BACKEND_URL = "https://recipecraft-rf3m.onrender.com/";
+  const BACKEND_URL = "https://recipecraft-rf3m.onrender.com";
 
   React.useEffect(() => {
     if (recipeShown && recipeRef.current) {

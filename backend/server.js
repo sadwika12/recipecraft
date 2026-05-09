@@ -6,15 +6,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 dotenv.config();
 
 const app = express();
-app.use(cors({
-  origin: [
-    "http://localhost:5173", 
-    "https://recipecraft.vercel.app", 
-    "https://recipecraft-seven.vercel.app" 
-  ],
-  methods: ["GET", "POST"],
-  allowedHeaders: ["Content-Type"]
-}));
+app.use(cors({ origin: '*' }));
 app.use(express.json());
 
 if (!process.env.GEMINI_API_KEY) {
