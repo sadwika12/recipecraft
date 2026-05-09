@@ -105,7 +105,7 @@ npm run dev
 
 ## 🤝 Contributing
 
-Contributions are welcome and greatly appreciated!
+Contributions are welcome
 
 ```bash
 # 1. Fork the repository
